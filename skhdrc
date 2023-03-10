@@ -21,6 +21,8 @@ alt - 7:  yabai -m space --focus 7
 alt - 8:  yabai -m space --focus 8 
 alt - 9:  yabai -m space --focus 9 
 
+# connect to wifi
+alt - 0:  osascript -e "tell application \"System Preferences\" to activate" -e "tell application \"System Preferences\" to set current pane to pane \"com.apple.preference.network\""
 # focus window
 alt - j : yabai -m window --focus recent
 alt - p : yabai -m window --focus prev
@@ -29,6 +31,10 @@ ctrl + shift - n: yabai -m space --create && \
                   index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')" && \
                   yabai -m space --focus "${index}"
 ctrl + shift - d: yabai -m space --destroy
+
+#open wifi
+# ctrl + shift + cmd - w: yabai -m space --create
+
 # cmd - k: yabai -m space --focus next
 # cmd - j: yabai -m space --focus prev
 
