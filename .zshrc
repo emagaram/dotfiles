@@ -117,6 +117,7 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 alias lv='lvim'
+alias wf='osascript -e "tell application \"System Preferences\" to activate" -e "tell application \"System Preferences\" to set current pane to pane \"com.apple.preference.network\""'
 export PATH="~/shellScripts:$PATH"
 alias t="~/shellScripts/smartTmuxAttach.sh"
 alias c="clear"
