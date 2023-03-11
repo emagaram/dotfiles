@@ -21,6 +21,8 @@ yabai -m config mouse_action2 resize
 yabai -m config mouse_drop_action swap
 
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+yabai -m rule --add app="^System Preferences$" manage=off
+
 sudo yabai --load-sa
 yabai -m config debug_output on
 yabai -m config layout bsp

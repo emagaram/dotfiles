@@ -117,7 +117,12 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 alias lv='lvim'
-alias wf='osascript -e "tell application \"System Preferences\" to activate" -e "tell application \"System Preferences\" to set current pane to pane \"com.apple.preference.network\""'
+# alias wf="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s | awk \"!seen[$1]++ {print \$1, \$2, \$3, \$4}\" | column -t"
+# alias wf="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport -s | awk \'!seen[$1]++ {print \$1, \$7}\' | column -t"
+# alias wf="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s | awk \"!seen[$1]++ {print \$1, \$2, \$3, \$4}\" | column -t"
+# alias wf='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s | awk "!seen[\$1]++ {print \$1, \$7}" | column -t'
+alias wf="/Users/ezramagaram/dotfiles/shellScripts/wifiConnect.sh"
+alias topLeftFocus="/Users/ezramagaram/dotfiles/shellScripts/topLeftFocus.sh"
 export PATH="~/shellScripts:$PATH"
 alias t="~/shellScripts/smartTmuxAttach.sh"
 alias c="clear"

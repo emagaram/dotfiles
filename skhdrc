@@ -4,11 +4,12 @@ cmd - k : chunkc tiling::window --focus next
 
 cmd - 1: open -a "Google Chrome"
 cmd - 2: open -a "Alacritty"
+cmd + shift - 2: open -n -a "Alacritty"
 cmd - 3: open -a "Notes"
 cmd - 4: open -a "Microsoft Outlook"
 cmd - 5: open -a "Spotify"
 cmd - 6: open -a "Microsoft Word"
-cmd - 9: open -a "System Preferences"
+cmd - 9: open -a "System Preferences" && topLeftFocus
 cmd - 0: open -n "Finder"
 
 alt - 1:  yabai -m space --focus 1 
@@ -22,7 +23,8 @@ alt - 8:  yabai -m space --focus 8
 alt - 9:  yabai -m space --focus 9 
 
 # connect to wifi
-alt - 0:  osascript -e "tell application \"System Preferences\" to activate" -e "tell application \"System Preferences\" to set current pane to pane \"com.apple.preference.network\""
+alt - 0:  automator ~/dotfiles/shellScripts/OpenWifi.workflow/ 
+ 
 # focus window
 alt - j : yabai -m window --focus recent
 alt - p : yabai -m window --focus prev
