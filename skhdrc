@@ -9,7 +9,9 @@ cmd - 3: open -a "Notes"
 cmd - 4: open -a "Microsoft Outlook"
 cmd - 5: open -a "Spotify"
 cmd - 6: open -a "Microsoft Word"
-cmd - 9: open -a "System Preferences" && topLeftFocus
+
+cmd - 8: open -a "Discord"
+cmd - 9: open -a "System Preferences"
 cmd - 0: open -n "Finder"
 
 alt - 1:  yabai -m space --focus 1 
@@ -23,16 +25,28 @@ alt - 8:  yabai -m space --focus 8
 alt - 9:  yabai -m space --focus 9 
 
 # connect to wifi
-alt - 0:  automator ~/dotfiles/shellScripts/OpenWifi.workflow/ 
- 
+alt - 0: ~/shellScripts/openWifi.sh
+
 # focus window
 alt - j : yabai -m window --focus recent
 alt - p : yabai -m window --focus prev
 alt - n : yabai -m window --focus next
 ctrl + shift - n: yabai -m space --create && \
+                   index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')" && \
+                   yabai -m window --space "${index}" && \
+                   yabai -m space --focus "${index}"
+
+ctrl + shift + cmd + alt - n: yabai -m space --create && \
                   index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')" && \
                   yabai -m space --focus "${index}"
+
+ctrl + shift + cmd + alt - s: ~/dotfiles/shellScripts/showStats.sh
+
 ctrl + shift - d: yabai -m space --destroy
+
+
+#COMMENTS
+# ctrl - 0: cliclick m:1462,200 && sleep 1 && cliclick c:1462,200 
 
 #open wifi
 # ctrl + shift + cmd - w: yabai -m space --create

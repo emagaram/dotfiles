@@ -21,6 +21,8 @@ lvim.leader = "space"
 lvim.format_on_save = true
 -- add your own keymapping
 
+lvim.lsp.automatic_servers_installation = true
+
 
 local keys = lvim.keys --for conciseness
 -- keys.insert_mode
@@ -136,6 +138,11 @@ formatters.setup {
     --     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
     filetypes = { "typescript", "typescriptreact" },
   },
+  {
+    command = "shfmt",
+    args = { "-i", "4", "-ci", "-s" },
+    filetypes = { "sh" },
+  }
 }
 
 -- import lualine plugin safely
@@ -208,6 +215,9 @@ lvim.plugins = {
     require("nvim-ts-autotag").setup()
   end,
 },
+  {
+    "christoomey/vim-tmux-navigator"
+  }
 }
 
 -- require("tint").setup({
