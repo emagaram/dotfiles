@@ -35,23 +35,26 @@ yabai -m rule --add app="Alacritty" opacity=0.93
 
 #For window borders if multiple apps
 yabai -m signal --add event=application_front_switched action="~/dotfiles/shellScripts/windowBorderManager.sh"
+yabai -m signal --add event=space_changed action="~/dotfiles/shellScripts/autoDestroySpaces.sh"
+
 
 #Auto destroy empty spaces
 # yabai -m signal --add event=space_changed action="~/dotfiles/shellScripts/autoDestroySpaces.sh"
 
 #! /usr/bin/env sh
 
-read -r -d '' action <<- 'EOF'
-  recent_space_index="$(yabai -m query --spaces | 
-    jq -er 'map(select(.id | tostring == env.YABAI_RECENT_SPACE_ID))[0].index')"
-  if yabai -m query --windows --space "${recent_space_index}" |
-    jq -er 'length == 0'
-  then
-    yabai -m space "${recent_space_index}" --destroy
-  fi
-EOF
+# read -r -d '' action <<- 'EOF'
+#   sleep 0.2
+#   recent_space_index="$(yabai -m query --spaces | 
+#     jq -er 'map(select(.id | tostring == env.YABAI_RECENT_SPACE_ID))[0].index')"
+#   if yabai -m query --windows --space "${recent_space_index}" |
+#     jq -er 'length == 0'
+#   then
+#     yabai -m space "${recent_space_index}" --destroy
+#   fi
+# EOF
 
-yabai -m signal --add event='space_changed' action="~/dotfiles/shellScripts/autoDestroySpaces.sh"
+# yabai -m signal --add event='space_changed' action="~/dotfiles/shellScripts/autoDestroySpaces.sh"
 
 # yabai -m signal --add event=window_destroyed action="~/dotfiles/shellScripts/windowBorderManager.sh"
 # yabai -m signal --add event=application_terminated action="~/dotfiles/shellScripts/windowBorderManager.sh"

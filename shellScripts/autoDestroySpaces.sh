@@ -1,13 +1,7 @@
-
-read -r -d '' action <<- 'EOF'
-  recent_space_index="$(yabai -m query --spaces |
-    jq -er "map(select(.id | tostring == \"$YABAI_RECENT_SPACE_ID\"))[0].index")"
-  if yabai -m query --windows --space "${recent_space_index}" |
-    jq -er 'length == 0'
-  then
-    yabai -m space "${recent_space_index}" --destroy
-  fi
-EOF
-
-eval "$action"
-
+#!/usr/bin/env bash
+sleep 2
+yabai -m query --spaces --display |
+    jq -re 'map(select(."is-native-fullscreen" == false)) | length > 1' &&
+    yabai -m query --spaces |
+    jq -re 'map(select(."windows" == [] and ."has-focus" == false).index) | reverse | .[] ' |
+        xargs -I % sh -c 'yabai -m space % --destroy'

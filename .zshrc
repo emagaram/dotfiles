@@ -124,3 +124,4 @@ alias lv='lvim'
 export PATH="~/shellScripts:$PATH"
 alias t="~/shellScripts/smartTmuxAttach.sh"
 alias c="clear"
+alias yabair='launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"'
