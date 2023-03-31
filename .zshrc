@@ -1,9 +1,14 @@
+# fortune | cowsay
+# cmatrix
+# pokemonshow
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
+source ~/Downloads/almostontop/almostontop.plugin.zsh
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/ezramagaram/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ezramagaram/Downloads/google-cloud-sdk/path.zsh.inc'; fi
@@ -116,12 +121,27 @@ source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-alias lv='lvim'
+alias v='lvim'
 # alias wf="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s | awk \"!seen[$1]++ {print \$1, \$2, \$3, \$4}\" | column -t"
 # alias wf="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport -s | awk \'!seen[$1]++ {print \$1, \$7}\' | column -t"
 # alias wf="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s | awk \"!seen[$1]++ {print \$1, \$2, \$3, \$4}\" | column -t"
 # alias wf='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s | awk "!seen[\$1]++ {print \$1, \$7}" | column -t'
+export PATH="/Applications/MacPorts/Alacritty.app/Contents/MacOS:$PATH"
 export PATH="~/shellScripts:$PATH"
+export PATH=$PATH:~/
+# export NNN_FIFO="/tmp/nnn.fifo"
+# export NNN_PLUG='f:finder;o:fzopen;p:mocq;d:diffs;t:nmount;v:imgview;p:preview-tui'
+# export NNN_PREVIEW_IMG="~/Downloads/prev.sh"
+# export NNN_TERMINAL="kitty"
+alias nem="neomutt"
 alias t="~/shellScripts/smartTmuxAttach.sh"
-alias c="clear"
+alias cl="clear"
+alias c="cd"
+alias nn="nnn"
+alias ra="ranger"
 alias yabair='launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"'
+alias skhdr='skhd --reload'
+alias szsh='source ~/.zshrc'
+export PATH="$(pyenv root)/shims:$PATH"
+
+

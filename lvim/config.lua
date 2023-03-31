@@ -1,0 +1,7 @@
+reload "user.options"
+reload "user.plugins"
+reload "user.keymaps"
+reload "user.lsp"
+reload "user.lualine"
+reload "user.tint"
+reload "user.treesitter"
