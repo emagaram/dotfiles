@@ -55,8 +55,6 @@ lvim.builtin.which_key.mappings["g"].v = { "<cmd>DiffviewOpen<cr>", "Open Diff V
 lvim.builtin.which_key.mappings["g"].x = { "<cmd>DiffviewClose<cr>", "Close Diff View" }
 
 
-
-
 -- unmap a default keysping
 -- vim.keys.del("n", "<C-Up>")
 -- override a default keysping

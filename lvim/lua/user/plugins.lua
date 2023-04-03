@@ -1,5 +1,13 @@
+lvim.builtin.alpha.active = true
+lvim.builtin.lualine.active = false
 lvim.plugins = {
   {
+    "rafamadriz/neon",
+    "bluz71/vim-nightfly-colors",
+    as = "nightfly",
+    "luisiacc/gruvbox-baby",
+    "catppuccin/nvim",
+    "sainnhe/gruvbox-material",
     "christoomey/vim-tmux-navigator",
     "justinmk/vim-sneak",
     "levouh/tint.nvim",
