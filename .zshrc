@@ -121,18 +121,12 @@ source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-alias v='lvim'
-# alias wf="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s | awk \"!seen[$1]++ {print \$1, \$2, \$3, \$4}\" | column -t"
-# alias wf="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport -s | awk \'!seen[$1]++ {print \$1, \$7}\' | column -t"
-# alias wf="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s | awk \"!seen[$1]++ {print \$1, \$2, \$3, \$4}\" | column -t"
-# alias wf='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s | awk "!seen[\$1]++ {print \$1, \$7}" | column -t'
+ alias wf='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s | awk "!seen[\$1]++ {print \$1, \$7}" | column -t'
 export PATH="/Applications/MacPorts/Alacritty.app/Contents/MacOS:$PATH"
 export PATH="~/shellScripts:$PATH"
 export PATH=$PATH:~/
-# export NNN_FIFO="/tmp/nnn.fifo"
-# export NNN_PLUG='f:finder;o:fzopen;p:mocq;d:diffs;t:nmount;v:imgview;p:preview-tui'
-# export NNN_PREVIEW_IMG="~/Downloads/prev.sh"
-# export NNN_TERMINAL="kitty"
+alias bgs="kitty @ set-colors -a background=#24283b"
+alias v='lvim'
 alias nem="neomutt"
 alias t="~/shellScripts/smartTmuxAttach.sh"
 alias cl="clear"

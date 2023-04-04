@@ -18,7 +18,7 @@ alt - 1:  open -a "Microsoft Word"
 alt - 2:  open -a "Whatsapp"
 alt - 3:  open -a "Messages"
 
-alt - 4:  yabai -m space --focus 4 
+alt - 4:  open -a "ChatGPT"
 alt - 5:  yabai -m space --focus 5 
 alt - 6:  yabai -m space --focus 6 
 alt - 7:  yabai -m space --focus 7 

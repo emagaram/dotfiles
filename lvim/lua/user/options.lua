@@ -15,7 +15,7 @@ lvim.builtin.nvimtree.on_config_done = function()
 ]])
 end
 vim.opt.relativenumber = true
-vim.opt.background = "dark"
+-- vim.opt.background = "dark"
 vim.opt.scrolloff = 8 -- is one of my fav
 vim.opt.hlsearch = false
 vim.opt.incsearch = true

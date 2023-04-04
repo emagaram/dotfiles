@@ -1235,7 +1235,7 @@ window_logo_path none
 
 #: Relative paths are resolved from the kitty configuration directory.
 
-# allow_remote_control no
+allow_remote_control yes
 
 #: Allow other programs to control kitty. If you turn this on, other
 #: programs can control all aspects of kitty, including sending text
@@ -2301,6 +2301,6 @@ map cmd+v       paste_from_clipboard
 
 
 # BEGIN_KITTY_THEME
-# Gruvbox Dark Soft
+# Tokyo Night
 include current-theme.conf
 # END_KITTY_THEME
