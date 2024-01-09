@@ -22,13 +22,33 @@ export PATH="$PATH:/Users/ezramagaram/.local/bin"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+export UNCRUSTIFY_CONFIG="/Users/ezramagaram/dotfiles/uncrustify.cfg"
+#nvim config selection
+
+alias nvim-lunar="NVIM_APPNAME=LunarVim nvim"
+alias nvim-lunar-2="NVIM_APPNAME=LunarVim2 nvim"
+
+function nvims() {
+  items=("Nvim" "Nvim2")
+  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
+  if [[ -z $config ]]; then
+    echo "Nothing selected"
+    return 0
+  elif [[ $config == "default" ]]; then
+    config=""
+  fi
+  NVIM_APPNAME=$config nvim $@
+}
+
+bindkey -s ^a "nvims\n"
+
+
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
-
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -125,6 +145,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH="/Applications/MacPorts/Alacritty.app/Contents/MacOS:$PATH"
 export PATH="~/shellScripts:$PATH"
 export PATH=$PATH:~/
+alias sg="sgpt"
 alias bgs="kitty @ set-colors -a background=#24283b"
 alias v='lvim'
 alias nem="neomutt"
@@ -138,4 +159,28 @@ alias skhdr='skhd --reload'
 alias szsh='source ~/.zshrc'
 export PATH="$(pyenv root)/shims:$PATH"
 
+
+
+# pnpm
+export PNPM_HOME="/Users/ezramagaram/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/ezramagaram/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/ezramagaram/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/ezramagaram/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/ezramagaram/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 

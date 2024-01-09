@@ -12,6 +12,7 @@ keys.normal_mode["<leader>sv"] = "<C-w>v"                     -- split verticall
 keys.normal_mode["<leader>sh"] = "<C-w>s"                     -- split horizontally
 keys.normal_mode["<leader>se"] = "<C-w>="                     -- make windows equal width
 keys.normal_mode["<leader>sx"] = ":close<CR>"                 -- close current split window
+keys.normal_mode["ss"] = ":w<CR>"
 keys.normal_mode["qq"] = ":q<CR>"
 keys.normal_mode["qa"] = ":qa<CR>"
 
@@ -36,7 +37,7 @@ keys.normal_mode["<leader>sq"] = [["<cmd>lua vim.lsp.buf.signature_help()<CR>" ,
 -- INSERT MODE
 keys.insert_mode["<C-s>"] = "<ESC>:w<cr>"
 keys.insert_mode["jj"] = "<ESC>"
-
+keys.insert_mode["jk"] = "<ESC>"
 -- VISUAL MODE
 keys.visual_mode["<leader>v"] = "\"_dP" -- paste over an area
 
@@ -84,3 +85,13 @@ lvim.builtin.which_key.mappings["g"].x = { "<cmd>DiffviewClose<cr>", "Close Diff
 
 -- Use which-key to add extra bindings with the leader-key prefix
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
+vim.cmd [[
+  function! Uncrustify()
+    let l:current_file = expand('%:p')
+    silent !uncrustify -f "l:current_file" -o "l:current_file" --no-backup
+    e
+  endfunction
+]]
+
+vim.cmd [[ command! Uncrustify :call Uncrustify() ]]
+

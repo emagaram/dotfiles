@@ -1,7 +1,16 @@
 lvim.builtin.alpha.active = true
 lvim.builtin.lualine.active = false
+
 lvim.plugins = {
   {
+    {
+      'laytan/tailwind-sorter.nvim',
+      requires = { 'nvim-treesitter/nvim-treesitter', 'nvim-lua/plenary.nvim' },
+      config = function() require('tailwind-sorter').setup() end,
+      run = 'cd formatter && npm i && npm run build',
+    },
+    "roobert/tailwindcss-colorizer-cmp.nvim",
+    "jose-elias-alvarez/typescript.nvim",
     "rafamadriz/neon",
     "bluz71/vim-nightfly-colors",
     as = "nightfly",
@@ -11,8 +20,29 @@ lvim.plugins = {
     "christoomey/vim-tmux-navigator",
     "justinmk/vim-sneak",
     "levouh/tint.nvim",
-    "nyoom-engineering/oxocarbon.nvim"
+    "nyoom-engineering/oxocarbon.nvim",
+    "MunifTanjim/nui.nvim"
   },
+  {
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end
+  },
+  -- Packer
+  -- {
+  --   "jackMort/ChatGPT.nvim",
+  --   config = function()
+  --     require("chatgpt").setup(
+  --     -- optional configuration
+  --     )
+  --   end,
+  --   requires = {
+  --     "MunifTanjim/nui.nvim",
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-telescope/telescope.nvim"
+  --   }
+  -- },
   {
     "folke/trouble.nvim",
     requires = "nvim-tree/nvim-web-devicons",
@@ -43,9 +73,9 @@ lvim.plugins = {
     end,
   },
   {
-    "windwp/nvim-ts-autotag",
-    config = function()
-      require("nvim-ts-autotag").setup()
-    end,
-  },
+    "tpope/vim-surround",
+    -- setup = function()
+    --  vim.o.timeoutlen = 500
+    -- end
+  }
 }

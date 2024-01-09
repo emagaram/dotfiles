@@ -1,22 +1,44 @@
+require "user.lsp.languages.js-ts"
+
 lvim.lsp.diagnostics.virtual_text = false
 lvim.lsp.automatic_servers_installation = true
+require("lvim.lsp.manager").setup("cssls", {
+  settings = {
+    css = {
+      validate = true,
+      lint = {
+        unknownAtRules = "ignore"
+      }
+    },
+    scss = {
+      validate = true,
+      lint = {
+        unknownAtRules = "ignore"
+      }
+    },
+    less = {
+      validate = true,
+      lint = {
+        unknownAtRules = "ignore"
+      }
+    },
+  },
+})
+require("lvim.lsp.manager").setup("tailwindcss", {})
+require("lvim.lsp.manager").setup("html", {})
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
-  {
-    --     -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
-    command = "prettier",
-    --     ---@usage arguments to pass to the formatter
-    --     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
-    --     extra_args = { "--print-with", "100" },
-    --     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-    filetypes = { "typescript", "typescriptreact" },
-  },
   {
     command = "shfmt",
     args = { "-i", "4", "-ci", "-s" },
     filetypes = { "sh" },
+  },
+  {
+    command = "clang-format",
+    filetypes = { "c" }
   }
 }
+
 function CopyDiagnosticsAtCursorToClipboard()
   -- Get the current buffer number
   local bufnr = vim.api.nvim_get_current_buf()
@@ -53,9 +75,10 @@ lvim.lsp.on_attach_callback = function(client, bufnr)
 
   -- Set keybindings for navigating signatures
   buf_set_keymap("n", "<C-m>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-  buf_set_keymap("n", "<C-j>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+  buf_set_keymap("n", "<C-e>", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
   buf_set_keymap("n", "<C-y>", "<cmd>lua CopyDiagnosticsAtCursorToClipboard()<CR>", opts);
 end
+
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {

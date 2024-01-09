@@ -1,1 +1,17 @@
-set forcekitty
+set forcechafa
+preview any_pdf application/pdf {{
+  dir=$(pwd | tr / _)
+  dir+="_"
+  filename=$(basename "$f" .extension)
+  dir+=$filename
+  output_file=~/.cache/ctpv/"$dir.jpg"
+  if [ ! -f "$output_file" ]; then
+    sips -s format jpeg "$f" --out "$output_file" > /dev/null
+    jpegoptim --size=20% "$output_file" > /dev/null
+  fi
+  chafa -s "${w}x${h}" "$output_file"
+}}
+
+preview any_text text/* {{
+    ~/.config/lf/bat_display.sh "$f"
+}}
