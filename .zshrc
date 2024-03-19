@@ -8,7 +8,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-source ~/Downloads/almostontop/almostontop.plugin.zsh
+source ~/Documents/almostontop/almostontop.plugin.zsh
+
+
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/ezramagaram/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ezramagaram/Downloads/google-cloud-sdk/path.zsh.inc'; fi
@@ -18,6 +20,7 @@ if [ -f '/Users/ezramagaram/Downloads/google-cloud-sdk/completion.zsh.inc' ]; th
 
 #If you come from bash you might have to change your $PATH.
 export PATH="$PATH:/Users/ezramagaram/.local/bin" 
+export PATH="/Users/ezramagaram/Library/Python/3.9/bin:$PATH"
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
@@ -25,8 +28,6 @@ export ZSH="$HOME/.oh-my-zsh"
 export UNCRUSTIFY_CONFIG="/Users/ezramagaram/dotfiles/uncrustify.cfg"
 #nvim config selection
 
-alias nvim-lunar="NVIM_APPNAME=LunarVim nvim"
-alias nvim-lunar-2="NVIM_APPNAME=LunarVim2 nvim"
 
 function nvims() {
   items=("Nvim" "Nvim2")
@@ -144,7 +145,7 @@ source $ZSH/oh-my-zsh.sh
  alias wf='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s | awk "!seen[\$1]++ {print \$1, \$7}" | column -t'
 export PATH="/Applications/MacPorts/Alacritty.app/Contents/MacOS:$PATH"
 export PATH="~/shellScripts:$PATH"
-export PATH=$PATH:~/
+export PATH="$PATH:/Users/ezramagaram/.dotnet/tools"
 alias sg="sgpt"
 alias bgs="kitty @ set-colors -a background=#24283b"
 alias v='lvim'
@@ -157,10 +158,13 @@ alias ra="ranger"
 alias yabair='launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"'
 alias skhdr='skhd --reload'
 alias szsh='source ~/.zshrc'
-export PATH="$(pyenv root)/shims:$PATH"
-
-
-
+# export PATH="$(pyenv root)/shims:$PATH"
+alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+alias nvim-lunar="NVIM_APPNAME=LunarVim nvim"
+alias nvim-lunar-2="NVIM_APPNAME=LunarVim2 nvim"
+alias dn="dotnet"
+alias doc="docker"
+alias python="python3"
 # pnpm
 export PNPM_HOME="/Users/ezramagaram/Library/pnpm"
 case ":$PATH:" in
@@ -171,16 +175,20 @@ esac
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/ezramagaram/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/ezramagaram/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/ezramagaram/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/anaconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/ezramagaram/anaconda3/bin:$PATH"
+        export PATH="/opt/anaconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

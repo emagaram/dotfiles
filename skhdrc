@@ -1,53 +1,66 @@
 cmd - 1: ~/dotfiles/shellScripts/openInNewWindowIfDNE.sh "Brave Browser"
-cmd + shift - 1: open -n -a "Brave Browser"
-cmd - 2: ~/dotfiles/shellScripts/findTerminal.sh anything 
-cmd + shift - 2: open -n -a "Alacritty"
+cmd + shift - 1: ~/dotfiles/shellScripts/openInNewWindowIfDNE.sh "Mullvad Browser"
+cmd - 2: open -a "kitty"
 cmd - 3: open -a "Notes"
 cmd - 4: open -a "Microsoft Outlook" 
 cmd - 5: open -a "Spotify"
 cmd - 6: open -a "Microsoft Word"
 cmd - 7: open -a "ChatGPT"
 cmd - 8: open -a "System Preferences"
-# cmd - 0: ~/dotfiles/shellScripts/findTerminal.sh ranger 
+# cmd - 0: ~/dotfiles/shellScripts/findTerminal.sh lf 
+
 # Bind cmd+shift-9 to store the current focused app name
 cmd + shift - 9 : yabai -m query --windows --window | jq -r '.app' > ~/.current_binded_app
 # Bind cmd-9 to focus the window of the app that was binded by cmd+shift-8
 cmd - 9 : yabai -m window --focus "$(yabai -m query --windows | jq -r "map(select(.app == \"$(cat ~/.current_binded_app)\")) | .[0].id")"
 
 cmd - 0x32: open -a "Visual Studio Code"
+alt - 0x32: ~/dotfiles/shellScripts/openInNewWindowIfDNE.sh "Docker Desktop"
 
 alt - 1: open -a "Microsoft Word"
 alt - 2: open -a "Whatsapp"
 alt - 3: open -a "Messages"
-alt - 4: open -a "Gmail"  
-alt - 5: open -a "Discord"
-alt - 6: open -a "Slack"
+alt - 4: open -a "Proton Mail"  
+alt - 5: open -a "Proton Calendar"
+alt - 6: open -a "Discord"
+alt - 6: open -a "Slack
 alt - 7: open -a "Google Maps"
-alt - 8: open -a "Google Calendar"
+alt - 8: open -a "YouTube"
 alt - 9: open -a "Steam"
-# connect to wifi
-alt - 0: ~/dotfiles/shellScripts/screenshot.sh
+alt - 0: screencapture -cx ~/Downloads/screenshot.png
+alt - p : yabai -m window --focus prev
+alt - n : yabai -m window --focus next
+
+# focus window
+alt - j : ~/dotfiles/shellScripts/cycleFocus.sh
+alt + shift - j : ~/dotfiles/shellScripts/cycleFocusBackwards.sh
+
+
+
 ctrl + shift + cmd + alt - c: ~/dotfiles/shellScripts/save_window.sh
 ctrl + shift + cmd + alt - v: ~/dotfiles/shellScripts/move_saved_window.sh
 ctrl + shift + cmd + alt - i: open -a "Inkscape"
 ctrl + shift + cmd + alt - f: yabai -m window --focus "$(yabai -m query --windows | jq -r 'map(select(.app == "Finder")) | .[0].id')"
-ctrl + shift + cmd + alt - p: open -a "Postman"
-ctrl + shift + cmd + alt - s: open -a "Sublime Text 2"
+ctrl + shift + cmd + alt - p: open -a "Plover"
+ctrl + shift + cmd + alt - s: open -a "Sublime Text"
+ctrl + shift + cmd + alt - t: open -a "Microsoft Teams (work or school)
+ctrl + shift + cmd + alt - e: open ~/Pictures/steno.png
 ctrl + shift + cmd + alt - x: open -a "Xcode"
 ctrl + shift + cmd + alt - b: open -a "Bitwarden"
 ctrl + shift + cmd + alt - z: open -a "ProtonVPN"
+ctrl + shift + cmd + alt - g: ~/dotfiles/shellScripts/openInNewWindowIfDNE.sh "pgAdmin 4"
+ctrl + shift + cmd + alt - 1: open -a "Tor Browser""
 ctrl + shift + cmd + alt - 7: open -a "Figma"
 ctrl + shift + cmd + alt - 8: open -a "zoom.us"
 ctrl + shift + cmd + alt - 9: open -a "Microsoft OneNote"
 ctrl + shift + cmd + alt - 0: open ~/dotfiles/skhdrc
 
-# focus window
-alt - j : ~/dotfiles/shellScripts/cycleFocus.sh
-alt + shift - j : ~/dotfiles/shellScripts/cycleFocusBackwards.shFo
-
-alt - p : yabai -m window --focus prev
-alt - n : yabai -m window --focus next
-
+# creates and focuses new space
+ctrl + shift + cmd + alt - n: yabai -m space --create && \
+                  index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')" && \
+                  yabai -m space --focus "${index}"
+ctrl + shift + cmd + alt - s: ~/dotfiles/shellScripts/toggleStatusBar.sh 
+ctrl + shift + cmd + alt - d: ~/dotfiles/shellScripts/autoDestroySpaces.sh
 
 
 
@@ -57,16 +70,9 @@ ctrl + shift - n: yabai -m space --create && \
                    yabai -m window --space "${index}" && \
                    yabai -m space --focus "${index}"
 
-# creates and focuses new space
-ctrl + shift + cmd + alt - n: yabai -m space --create && \
-                  index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')" && \
-                  yabai -m space --focus "${index}"
-ctrl + shift + cmd + alt - s: ~/dotfiles/shellScripts/toggleStatusBar.sh 
-ctrl + shift + cmd + alt - d: ~/dotfiles/shellScripts/autoDestroySpaces.sh
 
 # make just super? 
 ctrl + shift - d: yabai -m space --destroy
-
 
 #COMMENTS
 # ctrl - 0: cliclick m:1462,200 && sleep 1 && cliclick c:1462,200 

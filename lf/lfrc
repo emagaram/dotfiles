@@ -4,8 +4,8 @@ set ignorecase true
 set icons true
 set colors true
 
-set previewer ctpv
-set cleaner ctpvclear
+set previewer ~/.config/lf/lf_kitty_preview
+set cleaner ~/.config/lf/lf_kitty_clean
 &ctpv -s $id
 &ctpvquit $id
 
