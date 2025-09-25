@@ -20,7 +20,9 @@ if [ -f '/Users/ezramagaram/Downloads/google-cloud-sdk/completion.zsh.inc' ]; th
 
 #If you come from bash you might have to change your $PATH.
 export PATH="$PATH:/Users/ezramagaram/.local/bin" 
-export PATH="/Users/ezramagaram/Library/Python/3.9/bin:$PATH"
+# export PATH="/Users/ezramagaram/Library/Python/3.9/bin:$PATH"
+# export CODON_PYTHON=/opt/homebrew/opt/python@3.12/Frameworks/Python.framework/Versions/3.12/lib/libpython3.12.dylib
+# export PATH="$HOME/Downloads/pypy3.10-v7.3.15-macos_arm64/bin:$PATH"
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
@@ -142,7 +144,7 @@ source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
- alias wf='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s | awk "!seen[\$1]++ {print \$1, \$7}" | column -t'
+alias wf='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s | awk "!seen[\$1]++ {print \$1, \$7}" | column -t'
 export PATH="/Applications/MacPorts/Alacritty.app/Contents/MacOS:$PATH"
 export PATH="~/shellScripts:$PATH"
 export PATH="$PATH:/Users/ezramagaram/.dotnet/tools"
@@ -156,6 +158,7 @@ alias c="cd"
 alias nn="nnn"
 alias ra="ranger"
 alias yabair='launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"'
+alias car="cargo"
 alias skhdr='skhd --reload'
 alias szsh='source ~/.zshrc'
 # export PATH="$(pyenv root)/shims:$PATH"
@@ -173,22 +176,23 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/opt/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/ezramagaram/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/ezramagaram/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/ezramagaram/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/ezramagaram/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<

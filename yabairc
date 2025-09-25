@@ -1,7 +1,7 @@
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+yabai -m rule --add app="^Brave Browser$" manage=off
 
 sudo yabai --load-sa
-
 yabai -m config mouse_follows_focus off
 yabai -m config focus_follows_mouse off
 yabai -m config window_origin_display default
@@ -23,15 +23,15 @@ yabai -m config mouse_action2 resize
 yabai -m config mouse_drop_action swap
 
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
-yabai -m rule --add app="^(VS Relief Overlay|System Preferences|Finder)$" manage=off 
+yabai -m rule --add app="^(VS Relief Overlay|System Preferences|Finder|GIMP|Anki)$" manage=off 
 sudo yabai --load-sa
 yabai -m config debug_output on
 yabai -m config layout bsp
-yabai -m config top_padding    35
-yabai -m config bottom_padding 35
-yabai -m config left_padding   35
-yabai -m config right_padding  35
-yabai -m config window_gap     35
+yabai -m config top_padding    20
+yabai -m config bottom_padding 20
+yabai -m config left_padding   20
+yabai -m config right_padding  20
+yabai -m config window_gap     20
 yabai -m rule --add app="Alacritty" opacity=0.93
 yabai -m rule --add app="kitty" opacity=0.95
 # yabai -m signal --add event=application_front_switched action="~/dotfiles/shellScripts/windowBorderManager.sh"
